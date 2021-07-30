@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './tabelog1.css'
-import './tabelog2.css'
+import '../tabelog1.css'
+import '../tabelog2.css'
 import { decrement, increment } from './modalSlice'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'

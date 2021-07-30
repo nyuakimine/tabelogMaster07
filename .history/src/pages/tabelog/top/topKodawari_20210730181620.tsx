@@ -29,8 +29,6 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
   const showMoreReviewsBtn = () => {
     const showList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     showList.style.display = 'block'
-    const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
-    showModal.style.display = 'block'
   }
 
   const closeShowMoreReviewsBtn = () => {
@@ -68,7 +66,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
         </div>
       </div>
 
-      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable" style={{ display: 'none' }}>
+      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable">
         <div className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
           <p className="c-modal__close js-modal-close" onClick={closeShowMoreReviewsBtn}>
             閉じる

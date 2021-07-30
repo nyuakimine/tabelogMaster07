@@ -5,10 +5,11 @@ import { decrement, increment } from './modalSlice'
 //import './img.css'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
+import { KodawariModal } from './kodawariModal'
 
 export const TopHygiene: React.FC = () => {
   const topHygiene = useSelector((state: RootState) => state.topHygieneListSlice.data)
-
+  const dispatch = useDispatch()
   return topHygiene === null ? (
     <h2>loading...</h2>
   ) : (
@@ -55,6 +56,7 @@ export const TopHygiene: React.FC = () => {
           </div>
         </div>
       </div>
+      <KodawariModal></KodawariModal>
     </div>
   )
 }

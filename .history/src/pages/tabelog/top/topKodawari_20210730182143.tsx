@@ -29,8 +29,6 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
   const showMoreReviewsBtn = () => {
     const showList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     showList.style.display = 'block'
-    const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
-    showModal.style.display = 'block'
   }
 
   const closeShowMoreReviewsBtn = () => {

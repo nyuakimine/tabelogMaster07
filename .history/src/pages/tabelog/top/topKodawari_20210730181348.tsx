@@ -28,9 +28,13 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
 
   const showMoreReviewsBtn = () => {
     const showList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
-    showList.style.display = 'block'
-    const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
-    showModal.style.display = 'block'
+    showList.style.display = 'none'
+    const show = document.getElementsByClassName('hiddenSpan')[0] as HTMLElement
+    show.style.display = 'none'
+
+    const cshowList = document.getElementsByClassName('showMore')[0] as HTMLElement
+    cshowList.style.display = 'block'
+    cshowList.style.display = 'inline'
   }
 
   const closeShowMoreReviewsBtn = () => {
@@ -50,7 +54,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
           {data.map((img, idx) => {
             return (
               <div className="js-kodawari-cassete rstdtl-top-kodawari__target" data-kodawari-id="1" key={idx}>
-                <div className="rstdtl-top-kodawari__contents" onClick={showMoreReviewsBtn}>
+                <div className="rstdtl-top-kodawari__contents">
                   <p className="rstdtl-top-kodawari__label rstdtl-top-kodawari__label--food">{img.kodawaricolLabel} </p>
                   <div className="rstdtl-top-kodawari__photo" onClick={() => dispatch(clickImg(idx))}>
                     <img
@@ -68,7 +72,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
         </div>
       </div>
 
-      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable" style={{ display: 'none' }}>
+      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable">
         <div className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
           <p className="c-modal__close js-modal-close" onClick={closeShowMoreReviewsBtn}>
             閉じる

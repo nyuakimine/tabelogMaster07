@@ -19,25 +19,9 @@ interface pIf {
   data: ifProps[]
 }
 export const TopKodawari: React.FC<pIf> = ({ data }) => {
-  const count = useSelector((state: RootState) => state.madal.counter)
-  const imgLength = useSelector((state: RootState) => state.topKodawariSlice.data.data.length)
-  const currentBigImage = data.filter((num, index) => index === count)[0] as ifProps
-
   //const topKodawari = useSelector((state: RootState) => state.topKodawariSlice.data.data)
   const dispatch = useDispatch()
-
-  const showMoreReviewsBtn = () => {
-    const showList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
-    showList.style.display = 'block'
-    const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
-    showModal.style.display = 'block'
-  }
-
-  const closeShowMoreReviewsBtn = () => {
-    const cshowList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
-    cshowList.style.display = 'none'
-  }
-  return currentBigImage === undefined ? (
+  return data === undefined ? (
     <h2>loading...</h2>
   ) : (
     <div>
@@ -49,10 +33,15 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
         <div className="rstdtl-top-kodawari__item">
           {data.map((img, idx) => {
             return (
-              <div className="js-kodawari-cassete rstdtl-top-kodawari__target" data-kodawari-id="1" key={idx}>
-                <div className="rstdtl-top-kodawari__contents" onClick={showMoreReviewsBtn}>
+              <div
+                className="js-kodawari-cassete rstdtl-top-kodawari__target"
+                data-kodawari-id="1"
+                key={idx}
+                onClick={() => dispatch(clickImg(idx))}
+              >
+                <div className="rstdtl-top-kodawari__contents">
                   <p className="rstdtl-top-kodawari__label rstdtl-top-kodawari__label--food">{img.kodawaricolLabel} </p>
-                  <div className="rstdtl-top-kodawari__photo" onClick={() => dispatch(clickImg(idx))}>
+                  <div className="rstdtl-top-kodawari__photo">
                     <img
                       src={`${img.kodawariPhoto}`}
                       alt="安心安全の中で忘新年会を楽しもう！"
@@ -68,12 +57,9 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
         </div>
       </div>
 
-      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable" style={{ display: 'none' }}>
+      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable">
         <div className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
-          <p className="c-modal__close js-modal-close" onClick={closeShowMoreReviewsBtn}>
-            閉じる
-          </p>
-
+          <p className="c-modal__close js-modal-close">閉じる</p>
           <div className="c-modal__contents rstdtl-top-kodawari__modal-contents js-kodawari-contents js-kodawari-2 is-hidden">
             <div className="c-modal__inner rstdtl-top-kodawari__modal-contents-inner">
               <button
@@ -81,28 +67,33 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
                 type="submit"
                 className="rstdtl-top-kodawari__modal-target rstdtl-top-kodawari__modal-target--prev js-kodawari-modal-change"
                 data-other-kodawari="1"
-                onClick={() => dispatch(decrement(imgLength))}
+                onClick={() => dispatch(decrement(0))}
               >
                 <i>前へ</i>
               </button>
               <div className="rstdtl-top-kodawari__modal-photo">
-                <img width="320" height="320" alt="" src={`${currentBigImage.kodawariPhoto}`} />
+                <img
+                  width="320"
+                  height="320"
+                  alt="焼肉30％オフ実施中！！※金曜日は不可"
+                  src="https://tblg.k-img.com/restaurant/images/Rvw/44863/320x320_square_44863216.jpg"
+                />
               </div>
               <div className="rstdtl-top-kodawari__modal-textbox">
                 <p className="rstdtl-top-kodawari__modal-title-wrap">
-                  <span className="rstdtl-top-kodawari__modal-label rstdtl-top-kodawari__modal-label--food">
-                    {currentBigImage.kodawaricolLabel}
-                  </span>
-                  <span className="rstdtl-top-kodawari__modal-title">{currentBigImage.kodawariTitle}</span>
+                  <span className="rstdtl-top-kodawari__modal-label rstdtl-top-kodawari__modal-label--food">料理</span>
+                  <span className="rstdtl-top-kodawari__modal-title">焼肉30％オフ実施中！！※金曜日は不可</span>
                 </p>
-                <p className="rstdtl-top-kodawari__modal-comment">{currentBigImage.kodawariModalComment}</p>
+                <p className="rstdtl-top-kodawari__modal-comment">
+                  特上黒毛和牛カルビ（ザブトン）を是非一度！黒毛和牛上カルビ（カイノミ）黒毛和牛特上ロース（肩芯）など..他にも、ヤンニョムで味付けされた韓流骨付きカルビを骨までむしゃぶりついたり、厚切りのサムギョプサルを！お得な焼肉盛合せメニューもあります。是非一度、東京駅の地下街で炭火焼肉を楽しんでください。
+                </p>
               </div>
               <button
                 name="button"
                 type="submit"
                 className="rstdtl-top-kodawari__modal-target rstdtl-top-kodawari__modal-target--next js-kodawari-modal-change"
                 data-other-kodawari="3"
-                onClick={() => dispatch(increment(imgLength))}
+                onClick={() => dispatch(increment(0))}
               >
                 <i>次へ</i>
               </button>
@@ -110,6 +101,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
           </div>
         </div>
       </div>
+      {/* <KodawariModal></KodawariModal> */}
     </div>
   )
 }

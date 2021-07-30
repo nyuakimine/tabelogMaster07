@@ -1,24 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './tabelog1.css'
-import './tabelog2.css'
+import '../tabelog1.css'
+import '../tabelog2.css'
 import { decrement, increment } from './modalSlice'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 
-// interface ifProps {
-//   id: number
-//   kodawariPhoto: string
-//   kodawariHeadingTitle: string
-//   kodawariTitle: string
-//   kodawaricolLabel: string
-// }
+interface ifProps {
+  id: number
+  kodawariPhoto: string
+  kodawariHeadingTitle: string
+  kodawariTitle: string
+  kodawaricolLabel: string
+}
 
-// interface pIf {
-//   data: ifProps[]
-// }
-export const KodawariModal: React.FC = () => {
+interface pIf {
+  data: ifProps[]
+}
+export const KodawariModal: React.FC<pIf> = ({ data }) => {
   const dispatch = useDispatch()
-  return (
+  return data === undefined ? (
+    <h2>loading...</h2>
+  ) : (
     <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable">
       <div className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
         <p className="c-modal__close js-modal-close">閉じる</p>
