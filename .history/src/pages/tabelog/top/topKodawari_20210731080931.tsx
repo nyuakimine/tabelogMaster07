@@ -18,6 +18,7 @@ interface pIf {
   data: ifProps[]
 }
 export const TopKodawari: React.FC<pIf> = ({ data }) => {
+  console.log('TopKodawariData', data)
   const count = useSelector((state: RootState) => state.madal.counter)
   const imgLength = useSelector((state: RootState) => state.topKodawariSlice.data.data.length)
   const currentBigImage = data.filter((num, index) => index === count)[0] as ifProps
@@ -47,7 +48,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
     const closeModalList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     closeModalList.style.display = 'none' //点击的不是div或其子元素
   }
-  console.log('TopKodawariData', data)
+
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (

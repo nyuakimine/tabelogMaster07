@@ -11,8 +11,6 @@ import { fetchTopImgDataActionCreator } from '../../redux/topImg/topImg'
 import { fetchTopKodawariDataActionCreator } from '../../redux/topKodawari/topKodawari'
 import { fetchTopHygieneDataActionCreator } from '../../redux/topHygiene/topHygiene'
 import { fetchTopCourseDataActionCreator } from '../../redux/topCourse/topCourse'
-import { fetchTopCouponDataActionCreator } from '../../redux/topCoupon/topCoupon'
-import { fetchTopPostphotoDataActionCreator } from '../../redux/topPostphoto/topPostphoto'
 import { Sidebar } from './top/sidebar'
 import { TopNotice } from './top/topNotice'
 import { TopImg } from './top/img'
@@ -20,9 +18,6 @@ import { TopCommentWrap } from './top/topCommentWrap'
 import { TopKodawari } from './top/topKodawari'
 import { TopHygiene } from './top/topHygiene'
 import { TopCourse } from './top/topCourse'
-import { TopCoupon } from './top/topCoupon'
-import { TopPostphoto } from './top/topPostphoto'
-import { YoyakuTestHtml } from './top/yoyakuTestHtml'
 //import {topImg} from "./top/img"
 import { RootState } from '../../redux/store'
 import './tabelog1.css'
@@ -34,8 +29,7 @@ interface MatchParams {
 export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
   const topImg = useSelector((state: RootState) => state.topImgSlice.data.data)
   const topKodawari = useSelector((state: RootState) => state.topKodawariSlice.data.data)
-  // const topCoupon = useSelector((state: RootState) => state.topCoupon.data.data)
-  const topPostphoto = useSelector((state: RootState) => state.topPostphoto.data.data)
+  const topCourse = useSelector((state: RootState) => state.topCourse.data.data)
   const { id } = useParams<MatchParams>()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -47,8 +41,6 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
     dispatch(fetchTopKodawariDataActionCreator({ id: id }))
     dispatch(fetchTopHygieneDataActionCreator({ id: id }))
     dispatch(fetchTopCourseDataActionCreator({ id: id }))
-    dispatch(fetchTopCouponDataActionCreator({ id: id }))
-    dispatch(fetchTopPostphotoDataActionCreator({ id: id }))
   }, [])
   return topImg === null ? (
     <h2>loading...</h2>
@@ -74,10 +66,7 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
                 <TopCommentWrap></TopCommentWrap>
                 <TopKodawari data={topKodawari}></TopKodawari>
                 <TopHygiene></TopHygiene>
-                <TopCourse></TopCourse>
-                <TopCoupon></TopCoupon>
-                <TopPostphoto data={topPostphoto}></TopPostphoto>
-                {/* <YoyakuTestHtml></YoyakuTestHtml> */}
+                {/* <TopCourse data={topCourse}></TopCourse> */}
               </div>
             </section>
           </div>

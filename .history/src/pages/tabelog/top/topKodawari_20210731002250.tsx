@@ -5,6 +5,8 @@ import './modal.css'
 import { decrement, increment, clickImg } from './modalSlice'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
+import { KodawariModal } from './kodawariModal'
+
 interface ifProps {
   id: number
   kodawariPhoto: string
@@ -47,7 +49,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
     const closeModalList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     closeModalList.style.display = 'none' //点击的不是div或其子元素
   }
-  console.log('TopKodawariData', data)
+
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (

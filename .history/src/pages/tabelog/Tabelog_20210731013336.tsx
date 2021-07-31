@@ -11,8 +11,6 @@ import { fetchTopImgDataActionCreator } from '../../redux/topImg/topImg'
 import { fetchTopKodawariDataActionCreator } from '../../redux/topKodawari/topKodawari'
 import { fetchTopHygieneDataActionCreator } from '../../redux/topHygiene/topHygiene'
 import { fetchTopCourseDataActionCreator } from '../../redux/topCourse/topCourse'
-import { fetchTopCouponDataActionCreator } from '../../redux/topCoupon/topCoupon'
-import { fetchTopPostphotoDataActionCreator } from '../../redux/topPostphoto/topPostphoto'
 import { Sidebar } from './top/sidebar'
 import { TopNotice } from './top/topNotice'
 import { TopImg } from './top/img'
@@ -20,9 +18,6 @@ import { TopCommentWrap } from './top/topCommentWrap'
 import { TopKodawari } from './top/topKodawari'
 import { TopHygiene } from './top/topHygiene'
 import { TopCourse } from './top/topCourse'
-import { TopCoupon } from './top/topCoupon'
-import { TopPostphoto } from './top/topPostphoto'
-import { YoyakuTestHtml } from './top/yoyakuTestHtml'
 //import {topImg} from "./top/img"
 import { RootState } from '../../redux/store'
 import './tabelog1.css'
@@ -34,8 +29,7 @@ interface MatchParams {
 export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
   const topImg = useSelector((state: RootState) => state.topImgSlice.data.data)
   const topKodawari = useSelector((state: RootState) => state.topKodawariSlice.data.data)
-  // const topCoupon = useSelector((state: RootState) => state.topCoupon.data.data)
-  const topPostphoto = useSelector((state: RootState) => state.topPostphoto.data.data)
+  const topCourse = useSelector((state: RootState) => state.topCourse.data.data)
   const { id } = useParams<MatchParams>()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -47,8 +41,6 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
     dispatch(fetchTopKodawariDataActionCreator({ id: id }))
     dispatch(fetchTopHygieneDataActionCreator({ id: id }))
     dispatch(fetchTopCourseDataActionCreator({ id: id }))
-    dispatch(fetchTopCouponDataActionCreator({ id: id }))
-    dispatch(fetchTopPostphotoDataActionCreator({ id: id }))
   }, [])
   return topImg === null ? (
     <h2>loading...</h2>
@@ -59,13 +51,25 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
           <div className="rstdtl-header">
             <section className="rdheader-info-wrap pillow-header">
               <div className="owner-badge">
+                {/* <p className="owner-badge__icon">公式</p> */}
                 <div className="owner-badge__tooltip-frame">
-                  <div className="c-tooltip-bordered c-tooltip-bordered--bottom owner-badge__ex"></div>
+                  <div className="c-tooltip-bordered c-tooltip-bordered--bottom owner-badge__ex">
+                    {/* <p>お店の営業情報は店舗関係者によって公開されています。</p> */}
+                  </div>
                 </div>
               </div>
-              <div className="rdheader-go-hygiene"></div>
+              <div className="rdheader-go-hygiene">
+                {/* <a
+                  className="rdheader-go-hygiene__text js-scroll-to-sanitation js-analytics"
+                  data-analytics-btn="sanitations_information_icon"
+                  href="#hygiene-data"
+                >
+                  感染症対策
+                </a> */}
+              </div>
               <DetailTitle></DetailTitle>
               <RestaurantDesc></RestaurantDesc>
+              {/* <a name="photoheader" id="photoheader"></a> */}
               <Sidebar></Sidebar>
               <div id="column-main" className="layout1-main">
                 <TopNotice></TopNotice>
@@ -74,10 +78,7 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
                 <TopCommentWrap></TopCommentWrap>
                 <TopKodawari data={topKodawari}></TopKodawari>
                 <TopHygiene></TopHygiene>
-                <TopCourse></TopCourse>
-                <TopCoupon></TopCoupon>
-                <TopPostphoto data={topPostphoto}></TopPostphoto>
-                {/* <YoyakuTestHtml></YoyakuTestHtml> */}
+                <TopCourse data={topCourse}></TopCourse>
               </div>
             </section>
           </div>

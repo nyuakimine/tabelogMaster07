@@ -5,6 +5,8 @@ import './modal.css'
 import { decrement, increment, clickImg } from './modalSlice'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
+import { KodawariModal } from './kodawariModal'
+
 interface ifProps {
   id: number
   kodawariPhoto: string
@@ -27,13 +29,14 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
   const showMoreReviewsBtn = () => {
     const showList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     showList.style.display = 'block'
-    const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
+    const showModal = document.getElementsByClassName('modal_center')[0] as HTMLElement
     showModal.style.display = 'block'
   }
   const closeShowMoreReviewsBtn = () => {
     const cshowList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     cshowList.style.display = 'none'
   }
+
   const closeModal = e => {
     let a = e || window.event //浏览器兼容性
     let elem = a.target || a.srcElement
@@ -44,10 +47,11 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
       }
       elem = elem.parentNode
     }
+
     const closeModalList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     closeModalList.style.display = 'none' //点击的不是div或其子元素
   }
-  console.log('TopKodawariData', data)
+
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (
@@ -55,6 +59,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
       <div className="rstdtl-top-kodawari">
         <div className="rstdtl-heading">
           <h3 className="rstdtl-heading__title">{data[0].kodawariHeadingTitle}</h3>
+          {/* {data[0].kodawariHeadingTitle} */}
         </div>
         <div className="rstdtl-top-kodawari__item">
           {data.map((img, idx) => {
@@ -84,7 +89,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
             閉じる
           </p>
 
-          <div className="c-modal__contents rstdtl-top-kodawari__modal-contents js-kodawari-contents js-kodawari-1">
+          <div className="modal_center">
             <div className="c-modal__inner rstdtl-top-kodawari__modal-contents-inner" id="modal_show">
               <button
                 name="button"

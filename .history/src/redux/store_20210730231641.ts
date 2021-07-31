@@ -33,10 +33,6 @@ import { tabelogTopImgSlice } from '../redux/topImg/topImg'
 import { tabelogTopKodawariSlice } from '../redux/topKodawari/topKodawari'
 import { tabelogTopHygieneSlice } from '../redux/topHygiene/topHygiene'
 import { madalSlice } from '../pages/tabelog/top/modalSlice'
-import { tabelogTopCourseSlice } from '../redux/topCourse/topCourse'
-import { tabelogTopCouponSlice } from '../redux/topCoupon/topCoupon'
-import { tabelogTopPostphotoSlice } from '../redux/topPostphoto/topPostphoto'
-import { imgMadalSlice } from '../pages/tabelog/top/imgModalSlice'
 const persistConfig = {
   key: 'root',
   storage,
@@ -71,11 +67,7 @@ const rootReducer = combineReducers({
   topNoticeCommentSlice: tabelogTopNoticeCommentSlice.reducer,
   topKodawariSlice: tabelogTopKodawariSlice.reducer,
   topHygieneListSlice: tabelogTopHygieneSlice.reducer,
-  madal: madalSlice.reducer,
-  topCourse: tabelogTopCourseSlice.reducer,
-  topCoupon: tabelogTopCouponSlice.reducer,
-  topPostphoto: tabelogTopPostphotoSlice.reducer,
-  imgMadal: imgMadalSlice.reducer
+  madal: madalSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

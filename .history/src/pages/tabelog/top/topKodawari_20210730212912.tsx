@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './tabelog1.css'
 import './tabelog2.css'
-import './modal.css'
 import { decrement, increment, clickImg } from './modalSlice'
 import { RootState } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
+import { KodawariModal } from './kodawariModal'
+
 interface ifProps {
   id: number
   kodawariPhoto: string
@@ -30,24 +31,11 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
     const showModal = document.getElementsByClassName('c-modal__contents')[0] as HTMLElement
     showModal.style.display = 'block'
   }
+
   const closeShowMoreReviewsBtn = () => {
     const cshowList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
     cshowList.style.display = 'none'
   }
-  const closeModal = e => {
-    let a = e || window.event //浏览器兼容性
-    let elem = a.target || a.srcElement
-    while (elem) {
-      //循环判断至跟节点，防止点击的是div子元素
-      if (elem.id && elem.id === 'close') {
-        return
-      }
-      elem = elem.parentNode
-    }
-    const closeModalList = document.getElementsByClassName('c-overlay')[0] as HTMLElement
-    closeModalList.style.display = 'none' //点击的不是div或其子元素
-  }
-  console.log('TopKodawariData', data)
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (
@@ -55,6 +43,7 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
       <div className="rstdtl-top-kodawari">
         <div className="rstdtl-heading">
           <h3 className="rstdtl-heading__title">{data[0].kodawariHeadingTitle}</h3>
+          {/* {data[0].kodawariHeadingTitle} */}
         </div>
         <div className="rstdtl-top-kodawari__item">
           {data.map((img, idx) => {
@@ -78,14 +67,14 @@ export const TopKodawari: React.FC<pIf> = ({ data }) => {
         </div>
       </div>
 
-      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable" style={{ display: 'none' }} onClick={closeModal}>
-        <div id="close" className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
+      <div className="c-overlay js-overlay js-modal-overlay-clickarea is-closeable" style={{ display: 'none' }}>
+        <div className="c-modal rstdtl-top-kodawari__modal js-kodawari-detail-modal">
           <p className="c-modal__close js-modal-close" onClick={closeShowMoreReviewsBtn}>
             閉じる
           </p>
 
-          <div className="c-modal__contents rstdtl-top-kodawari__modal-contents js-kodawari-contents js-kodawari-1">
-            <div className="c-modal__inner rstdtl-top-kodawari__modal-contents-inner" id="modal_show">
+          <div className="c-modal__contents rstdtl-top-kodawari__modal-contents js-kodawari-contents js-kodawari-2 is-hidden">
+            <div className="c-modal__inner rstdtl-top-kodawari__modal-contents-inner">
               <button
                 name="button"
                 type="submit"

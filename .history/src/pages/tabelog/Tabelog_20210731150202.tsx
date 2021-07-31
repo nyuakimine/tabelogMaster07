@@ -34,8 +34,7 @@ interface MatchParams {
 export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
   const topImg = useSelector((state: RootState) => state.topImgSlice.data.data)
   const topKodawari = useSelector((state: RootState) => state.topKodawariSlice.data.data)
-  // const topCoupon = useSelector((state: RootState) => state.topCoupon.data.data)
-  const topPostphoto = useSelector((state: RootState) => state.topPostphoto.data.data)
+  const topCoupon = useSelector((state: RootState) => state.topCoupon.data.data)
   const { id } = useParams<MatchParams>()
   const dispatch = useDispatch()
   useEffect(() => {
@@ -75,9 +74,9 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
                 <TopKodawari data={topKodawari}></TopKodawari>
                 <TopHygiene></TopHygiene>
                 <TopCourse></TopCourse>
-                <TopCoupon></TopCoupon>
-                <TopPostphoto data={topPostphoto}></TopPostphoto>
-                {/* <YoyakuTestHtml></YoyakuTestHtml> */}
+                <TopCoupon data={topCoupon}></TopCoupon>
+                <TopPostphoto></TopPostphoto>
+                <YoyakuTestHtml></YoyakuTestHtml>
               </div>
             </section>
           </div>

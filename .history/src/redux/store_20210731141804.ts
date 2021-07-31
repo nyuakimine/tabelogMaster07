@@ -36,7 +36,6 @@ import { madalSlice } from '../pages/tabelog/top/modalSlice'
 import { tabelogTopCourseSlice } from '../redux/topCourse/topCourse'
 import { tabelogTopCouponSlice } from '../redux/topCoupon/topCoupon'
 import { tabelogTopPostphotoSlice } from '../redux/topPostphoto/topPostphoto'
-import { imgMadalSlice } from '../pages/tabelog/top/imgModalSlice'
 const persistConfig = {
   key: 'root',
   storage,
@@ -74,8 +73,7 @@ const rootReducer = combineReducers({
   madal: madalSlice.reducer,
   topCourse: tabelogTopCourseSlice.reducer,
   topCoupon: tabelogTopCouponSlice.reducer,
-  topPostphoto: tabelogTopPostphotoSlice.reducer,
-  imgMadal: imgMadalSlice.reducer
+  topPostphoto: tabelogTopPostphotoSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
