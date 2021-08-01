@@ -162,7 +162,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                   <div className="like-button photo-lightbox__like-button">
                     <div className="js-like-button-ReviewImage-153839147 like-btn">
                       <a className="like-btn__label" data-proc="add-like">
-                        <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={helpNumFun}>
+                        <span className="helpNumSpan" review-id={currentBigImage.userId} onClick={helpNumFun}>
                           いいね！
                         </span>
                       </a>
@@ -224,7 +224,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                     <p className="photo-lightbox-side__user-name">
                       <span>
                         <a target="_blank" href="https://tabelog.com/rvwr/008699012/" rel="noreferrer">
-                          {currentBigImage.userName}
+                          豚汁番長
                         </a>
                       </span>
                       さんの写真
@@ -244,7 +244,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                     </a>
                   </p>
                   <p className="photo-lightbox-side__comment">
-                    {currentBigImage.sideComment}
+                    吾照里東京駅八重洲口店で朝食 7:30開店 朝定食が...
                     <a href="/tokyo/A1302/A130201/13019285/dtlrvwlst/B430301945/#130426749" target="_blank">
                       続きを読む»
                     </a>

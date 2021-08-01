@@ -244,7 +244,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                     </a>
                   </p>
                   <p className="photo-lightbox-side__comment">
-                    {currentBigImage.sideComment}
+                    吾照里東京駅八重洲口店で朝食 7:30開店 朝定食が...
                     <a href="/tokyo/A1302/A130201/13019285/dtlrvwlst/B430301945/#130426749" target="_blank">
                       続きを読む»
                     </a>

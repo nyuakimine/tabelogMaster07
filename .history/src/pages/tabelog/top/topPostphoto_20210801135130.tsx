@@ -6,7 +6,7 @@ import '../tabelog2.css'
 import './bigImgModal.css'
 import { decrement, increment, clickImg } from './imgModalSlice'
 import { fetchModalLikeNumDataActionCreator } from '../../../redux/modalLikeNumSlice/modalLikeNumSlice'
-import { RouteComponentProps, useParams } from 'react-router-dom'
+
 interface ifProps {
   id: number
   headingTitle: string
@@ -21,18 +21,14 @@ interface ifProps {
   userIconLink: string
   userName: string
   userId: number
-  imgId: number
+  any2: string
   any3: string
 }
 
 interface pIf {
   data: ifProps[]
 }
-interface MatchParams {
-  id: string
-}
 export const TopPostphoto: React.FC<pIf> = ({ data }) => {
-  const { id } = useParams<MatchParams>()
   const dispatch = useDispatch()
   const imgLength = useSelector((state: RootState) => state.topPostphoto.data.data.length)
   const count = useSelector((state: RootState) => state.imgMadal.counter)
@@ -63,9 +59,19 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
   }
 
   const helpNumFun = e => {
+    // debugger;
     let likeId = e.currentTarget.getAttribute('review-id')
-    dispatch(fetchModalLikeNumDataActionCreator({ likeId, id }))
+    // let flag = false;
+    // for (let i = 0; i < ids.length; i++) {
+    //   if (ids[i] === +reviewId) {
+    //     flag = true;
+    //   }
+    // }
+    dispatch(fetchModalLikeNumDataActionCreator({ likeId }))
   }
+
+  //   review-id={reviewList.id}
+  //   onClick={helpNumFun}
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (
@@ -162,7 +168,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                   <div className="like-button photo-lightbox__like-button">
                     <div className="js-like-button-ReviewImage-153839147 like-btn">
                       <a className="like-btn__label" data-proc="add-like">
-                        <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={helpNumFun}>
+                        <span className="helpNumSpan" review-id={currentBigImage.userId} onClick={helpNumFun}>
                           いいね！
                         </span>
                       </a>
@@ -224,7 +230,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                     <p className="photo-lightbox-side__user-name">
                       <span>
                         <a target="_blank" href="https://tabelog.com/rvwr/008699012/" rel="noreferrer">
-                          {currentBigImage.userName}
+                          豚汁番長
                         </a>
                       </span>
                       さんの写真
@@ -244,7 +250,7 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                     </a>
                   </p>
                   <p className="photo-lightbox-side__comment">
-                    {currentBigImage.sideComment}
+                    吾照里東京駅八重洲口店で朝食 7:30開店 朝定食が...
                     <a href="/tokyo/A1302/A130201/13019285/dtlrvwlst/B430301945/#130426749" target="_blank">
                       続きを読む»
                     </a>
