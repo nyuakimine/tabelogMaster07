@@ -40,7 +40,6 @@ import { imgMadalSlice } from '../pages/tabelog/top/imgModalSlice'
 import { modalLikeNumSlice } from '../redux/modalLikeNumSlice/modalLikeNumSlice'
 import { newBeeMallDelModalLikeNumSlice } from '../redux/delModalLikeNumSlice/delModalLikeNumSlice'
 import { tabelogTopReviewCommentSlice } from '../redux/topReview/topReview'
-import { tabelogTopMatomeSlice } from '../redux/topMatome/topMatome'
 const persistConfig = {
   key: 'root',
   storage,
@@ -82,8 +81,7 @@ const rootReducer = combineReducers({
   imgMadal: imgMadalSlice.reducer,
   modalLikeNum: modalLikeNumSlice.reducer,
   delModalLikeNum: newBeeMallDelModalLikeNumSlice.reducer,
-  topReviewSlice: tabelogTopReviewCommentSlice.reducer,
-  topMatome: tabelogTopMatomeSlice.reducer
+  topReviewSlice: tabelogTopReviewCommentSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

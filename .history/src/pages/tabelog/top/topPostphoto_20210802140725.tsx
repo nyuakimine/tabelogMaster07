@@ -167,20 +167,9 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                 <li className="photo-lightbox__photo-information-item">
                   <div className="like-button photo-lightbox__like-button">
                     <div className="js-like-button-ReviewImage-153839147 like-btn">
-                      <a className="like-btn__label" data-proc="add-like">
+                      <a className="like-btn__label" data-proc="add-like" onClick={delHelpNumFun}>
                         <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={helpNumFun}>
                           いいね！
-                        </span>
-                      </a>
-                      <div className="like-btn__count js-like-btn-count is-hidden">
-                        <span> {currentBigImage.likeNum}</span>
-                      </div>
-                    </div>
-
-                    <div className="js-like-button-ReviewImage-153839147 like-btn">
-                      <a className="like-btn__label" data-proc="add-like">
-                        <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={delHelpNumFun}>
-                          いいねを取り消し！
                         </span>
                       </a>
                       <div className="like-btn__count js-like-btn-count is-hidden">

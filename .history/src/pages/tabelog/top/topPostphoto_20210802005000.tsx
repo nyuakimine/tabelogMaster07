@@ -7,7 +7,6 @@ import './bigImgModal.css'
 import { decrement, increment, clickImg } from './imgModalSlice'
 import { fetchModalLikeNumDataActionCreator } from '../../../redux/modalLikeNumSlice/modalLikeNumSlice'
 import { RouteComponentProps, useParams } from 'react-router-dom'
-import { fetchDelModalLikeNumDataActionCreator } from '../../../redux/delModalLikeNumSlice/delModalLikeNumSlice'
 interface ifProps {
   id: number
   headingTitle: string
@@ -66,12 +65,9 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
   const helpNumFun = e => {
     let likeId = e.currentTarget.getAttribute('review-id')
     dispatch(fetchModalLikeNumDataActionCreator({ likeId, id }))
+    const cshowList = document.getElementsByClassName('helpNumSpan')[0] as HTMLElement
+    cshowList.style.display = 'none'
   }
-  const delHelpNumFun = e => {
-    let likeId = e.currentTarget.getAttribute('review-id')
-    dispatch(fetchDelModalLikeNumDataActionCreator({ likeId, id }))
-  }
-
   return currentBigImage === undefined ? (
     <h2>loading...</h2>
   ) : (
@@ -170,17 +166,6 @@ export const TopPostphoto: React.FC<pIf> = ({ data }) => {
                       <a className="like-btn__label" data-proc="add-like">
                         <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={helpNumFun}>
                           いいね！
-                        </span>
-                      </a>
-                      <div className="like-btn__count js-like-btn-count is-hidden">
-                        <span> {currentBigImage.likeNum}</span>
-                      </div>
-                    </div>
-
-                    <div className="js-like-button-ReviewImage-153839147 like-btn">
-                      <a className="like-btn__label" data-proc="add-like">
-                        <span className="helpNumSpan" review-id={currentBigImage.imgId} onClick={delHelpNumFun}>
-                          いいねを取り消し！
                         </span>
                       </a>
                       <div className="like-btn__count js-like-btn-count is-hidden">

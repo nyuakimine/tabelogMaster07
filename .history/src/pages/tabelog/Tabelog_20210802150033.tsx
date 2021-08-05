@@ -13,8 +13,6 @@ import { fetchTopHygieneDataActionCreator } from '../../redux/topHygiene/topHygi
 import { fetchTopCourseDataActionCreator } from '../../redux/topCourse/topCourse'
 import { fetchTopCouponDataActionCreator } from '../../redux/topCoupon/topCoupon'
 import { fetchTopPostphotoDataActionCreator } from '../../redux/topPostphoto/topPostphoto'
-import { fetchTopReviewCommentDataActionCreator } from '../../redux/topReview/topReview'
-import { fetchTopMatomeDataActionCreator } from '../../redux/topMatome/topMatome'
 import { Sidebar } from './top/sidebar'
 import { TopNotice } from './top/topNotice'
 import { TopImg } from './top/img'
@@ -26,7 +24,6 @@ import { TopCoupon } from './top/topCoupon'
 import { TopPostphoto } from './top/topPostphoto'
 import { YoyakuTestHtml } from './top/yoyakuTestHtml'
 import { TopReview } from './top/topReview'
-import { TopMatome } from './top/topMatome'
 //import {topImg} from "./top/img"
 import { RootState } from '../../redux/store'
 import './tabelog1.css'
@@ -53,8 +50,6 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
     dispatch(fetchTopCourseDataActionCreator({ id: id }))
     dispatch(fetchTopCouponDataActionCreator({ id: id }))
     dispatch(fetchTopPostphotoDataActionCreator({ id: id }))
-    dispatch(fetchTopReviewCommentDataActionCreator({ id: id }))
-    dispatch(fetchTopMatomeDataActionCreator({ id: id }))
   }, [])
   return topImg === null ? (
     <h2>loading...</h2>
@@ -84,7 +79,6 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
                 <TopCoupon></TopCoupon>
                 <TopPostphoto data={topPostphoto}></TopPostphoto>
                 <TopReview></TopReview>
-                <TopMatome></TopMatome>
                 {/* <YoyakuTestHtml></YoyakuTestHtml> */}
               </div>
             </section>
