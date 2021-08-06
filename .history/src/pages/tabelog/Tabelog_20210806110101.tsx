@@ -15,7 +15,6 @@ import { fetchTopCouponDataActionCreator } from '../../redux/topCoupon/topCoupon
 import { fetchTopPostphotoDataActionCreator } from '../../redux/topPostphoto/topPostphoto'
 import { fetchTopReviewCommentDataActionCreator } from '../../redux/topReview/topReview'
 import { fetchTopMatomeDataActionCreator } from '../../redux/topMatome/topMatome'
-import { fetchTopBasicInformationDataActionCreator } from '../../redux/topBasicInformation/topBasicInformation'
 import { Sidebar } from './top/sidebar'
 import { TopNotice } from './top/topNotice'
 import { TopImg } from './top/img'
@@ -57,7 +56,6 @@ export const Tabelog: React.FC<RouteComponentProps<MatchParams>> = () => {
     dispatch(fetchTopPostphotoDataActionCreator({ id: id }))
     dispatch(fetchTopReviewCommentDataActionCreator({ id: id }))
     dispatch(fetchTopMatomeDataActionCreator({ id: id }))
-    dispatch(fetchTopBasicInformationDataActionCreator({ id: id }))
   }, [])
   return topImg === null ? (
     <h2>loading...</h2>
